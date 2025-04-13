@@ -1,2 +1,2 @@
-# <font style="colort:violet;">                   Embrosy </font>
+# <font style="color:violet;">                   Embrosy </font>
 It is game about  ""
