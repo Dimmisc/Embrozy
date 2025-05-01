@@ -14,9 +14,9 @@
 
 ### The world (now only multiplayer):
 
-1. #### World consist of dust (Сube is the smallest unit in the world size 8x8x8 pixels);
-2. **Units** of measurement:
-   * 1 meter consist of 64x64x64 dust units **(it is not solid block)**;
+1. #### World consist of dust (Сube is the smallest unit in the world size 16x16x16 pixels);
+2. Units of measurement:
+   * 1 meter consist of 32x32x32 dust units **(it is not solid block)**;
 3. All items, effects, creatures are consist of dust;
 4. The player height not permanent But the ideal (2 metres);
 
