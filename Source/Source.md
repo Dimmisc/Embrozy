@@ -12,7 +12,7 @@
 * #### Multi-user
 * #### destructibility
 
-### The world (now only multiplayer):
+### The world (now only singleplayer):
 
 1. #### World consist of dust (Сube is the smallest unit in the world size 16x16x16 pixels);
 2. Units of measurement:
