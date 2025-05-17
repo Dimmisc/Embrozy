@@ -20,4 +20,4 @@ public:
 };
 
 
-#endif
+#endif // _CUBE_HPP_
