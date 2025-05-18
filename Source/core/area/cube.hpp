@@ -2,8 +2,7 @@
 #define _CUBE_HPP_
 
 
-#include "surfaces/mainSurface.hpp"
-#include "surfaces/subSurface.hpp"
+#include "surfaces/surface.hpp"
 
 #include "dust.hpp"
 
@@ -15,9 +14,20 @@
 class cube
 {
 public:
-    static uint8_t DUST_SIZE;
-
+    static uint8_t QUANTITY_LEN_XYZ;
+    dustCube *dustConsist;
+    Surface cubeFace;
+    uint16_t cubeType;
+    int8_t x;
+    int8_t y;
+    int8_t z;
 };
+
+typedef struct cubeGrid 
+{   
+    cube **grid;
+    uint16_t quantityLenXY;
+} cubeGrid;
 
 
 #endif // _CUBE_HPP_
