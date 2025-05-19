@@ -11,23 +11,23 @@
 #define CUBE_SIZE_STANDART 32
 
 
-class cube
+class Сube
 {
 public:
     static uint8_t QUANTITY_LEN_XYZ;
-    dustCube *dustConsist;
+    
+    DustCube *dustConsist;
     Surface cubeFace;
     uint16_t cubeType;
-    int8_t x;
-    int8_t y;
-    int8_t z;
+    int8_t x{0};
+    int8_t y{0};
 };
 
-typedef struct cubeGrid 
+typedef struct СubeGrid 
 {   
-    cube **grid;
+    Сube **grid;
     uint16_t quantityLenXY;
-} cubeGrid;
+} CubeGrid;
 
 
 #endif // _CUBE_HPP_

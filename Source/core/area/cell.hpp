@@ -10,16 +10,19 @@
 #include "cube.hpp"
 
 
-class cell 
+class Cell 
 {
 public:
     static uint8_t quantityXYZ;
-    cubeGrid *cubeLayots;
+    CubeGrid *cubeLayots;
     uint8_t quantityLayots;
-    int32_t x;
-    int32_t y;
-    int32_t z;
+    int32_t x{0}, y{0}, z{0};
 };
+
+typedef struct CellGrid {
+    Cell **grid;
+    static uint8_t quantityXYZ;
+} CellGrid;
 
 
 #endif // _CELL_HPP_

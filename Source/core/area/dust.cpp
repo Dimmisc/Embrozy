@@ -1,7 +1,7 @@
 #include "dust.hpp"
 
 
-int main(){
-    sizeof(dust);
+int dust_main(){
+    sizeof(Dust);
     sizeof(int);
 }
