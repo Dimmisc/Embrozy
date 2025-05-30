@@ -1,0 +1,2 @@
+Load here in file stb_image.h code from 
+https://github.com/nothings/stb/blob/master/stb_image.h#L930

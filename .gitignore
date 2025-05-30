@@ -1,2 +1,5 @@
 .vscode
 build/
+glad/src
+glad/include
+stb/stb_image.h

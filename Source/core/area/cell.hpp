@@ -13,9 +13,9 @@
 class Cell 
 {
 public:
-    static uint8_t quantityXYZ;
+    static uint8_t quantityLayots;
     CubeGrid *cubeLayots;
-    uint8_t quantityLayots;
+    Surface *cellFace;
     int32_t x{0}, y{0}, z{0};
 };
 

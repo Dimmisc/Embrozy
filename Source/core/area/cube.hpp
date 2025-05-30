@@ -3,7 +3,6 @@
 
 
 #include "surfaces/surface.hpp"
-
 #include "dust.hpp"
 
 #include <cstdint>
@@ -12,12 +11,12 @@
 
 
 class Сube
-{
+{   
+    Surface cubeFace;
 public:
     static uint8_t QUANTITY_LEN_XYZ;
     
     DustCube *dustConsist;
-    Surface cubeFace;
     uint16_t cubeType;
     int8_t x{0};
     int8_t y{0};

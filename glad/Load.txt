@@ -1,0 +1,3 @@
+Load your glad for openGL 3.3 and above
+you can generate it on https://glad.dav1d.de/ 
+PS* use all extensions for simplicity
