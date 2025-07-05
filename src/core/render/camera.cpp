@@ -22,7 +22,6 @@ Camera::Camera(float posX, float posY, float posZ, float upX, float upY, float u
 
 glm::mat4 Camera::GetViewMatrix()
 {
-    // target = Position + Front
     return glm::lookAt(Position, Position + Front, Up);
 }
 
@@ -47,7 +46,6 @@ void Camera::ProcessMouseMovement(float xoffset, float yoffset, bool constrainPi
     Yaw   += xoffset;
     Pitch += yoffset;
 
-    // Убеждаемся, что когда тангаж выходит за пределы, экран не переворачивается
     if (constrainPitch)
     {
         if (Pitch > 89.0f)
@@ -56,7 +54,7 @@ void Camera::ProcessMouseMovement(float xoffset, float yoffset, bool constrainPi
             Pitch = -89.0f;
     }
 
-    // Обновляем векторы Front, Right и Up, используя обновленные углы Эйлера
+    // update vectors Front, Right и Up, using Eiler's angles
     updateCameraVectors();
 }
 
@@ -71,13 +69,13 @@ void Camera::ProcessMouseScroll(float yoffset)
 
 void Camera::updateCameraVectors()
 {
-    // Вычисляем новый вектор Front
+    // update front     vector
     glm::vec3 front;
     front.x = cos(glm::radians(Yaw)) * cos(glm::radians(Pitch));
     front.y = sin(glm::radians(Pitch));
     front.z = sin(glm::radians(Yaw)) * cos(glm::radians(Pitch));
     Front = glm::normalize(front);
-    // Также пересчитываем векторы Right и Up
+    // update right, up vectors
     Right = glm::normalize(glm::cross(Front, WorldUp));  // Нормализуем, потому что их длина может приближаться к 0, когда вы смотрите вверх или вниз, что приводит к замедлению движения.
     Up    = glm::normalize(glm::cross(Right, Front));
 }

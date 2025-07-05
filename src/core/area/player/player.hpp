@@ -5,12 +5,14 @@
 #include "../dust.hpp"
 #include "../../render/camera.hpp"
 
+#include <glm/glm.hpp>
 
 
 class Player 
 {
 public: 
-    int64_t x, y, z;
+    
+    glm::vec3 pos;
     Camera camera;
     
 };

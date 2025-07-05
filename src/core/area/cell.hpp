@@ -9,20 +9,40 @@
 
 #include "cube.hpp"
 
-
+typedef struct {
+    int32_t x, y, z;
+}CellPos;
 class Cell 
 {
 public:
     static uint8_t quantityLayots;
     CubeGrid *cubeLayots;
     Surface *cellFace;
-    int32_t x{0}, y{0}, z{0};
+    CellPos cellPos;
 };
 
 typedef struct CellGrid {
     Cell **grid;
-    static uint8_t quantityXYZ;
+    static uint8_t quantityXY;
 } CellGrid;
 
+class CellSystem {
+    
+    int Free_CellLine(Cell *Line);
 
+    int Free_CellGrid(Cell **Grid);
+public:
+    Cell **space;
+    int8_t *maspos;
+    int8_t  quantity;
+    int8_t *deeppos;
+    
+    CellSystem(int raadius, CellPos central_cell);
+    
+    CellSystem(int radius);
+    
+    int resize(int radius);
+
+    int central_shift(int x, int y, int z);
+};
 #endif // _CELL_HPP_
