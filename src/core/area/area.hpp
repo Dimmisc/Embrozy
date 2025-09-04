@@ -1,8 +1,12 @@
 #ifndef _AREA_HPP_
 #define _AREA_HPP_
 
-#include <cstdint>
+#include "player/player.hpp"
+#include "cell.hpp"
 
+
+#include <string>
+#include <cstdint>
 #include <glm/glm.hpp>
 
 class Area {
@@ -14,7 +18,7 @@ class Area {
     Camera MainPlayer;
     CellSystem world;
 
-    int Area(std::string name, const bool LOCALWORLD);
+    Area(std::string name, const bool LOCALWORLD);
 
     int upload(std::string name);
 

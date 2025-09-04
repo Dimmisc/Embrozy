@@ -10,4 +10,10 @@
 
 int Init_Render();
 
+int _PrepareRender();
+
+int UpdateScreen();
+
+int _ClearRender();
+
 #endif //_RENDER_HPP_

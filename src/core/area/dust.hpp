@@ -13,8 +13,7 @@
 #define DUST_SIZE_CHECK 8 // Using in debugging and testing features
 
 
-class Dust 
-{
+class Dust {
 public:
     float rotationX{0};
     float rotationY{0};
@@ -25,21 +24,18 @@ public:
     _DustType *type{nullptr};
 };
 
-typedef struct DustLine
-{
+typedef struct DustLine {
     Dust *line;
     uint8_t quantity;
 } DustLine;
 
-typedef struct DustGrid
-{
+typedef struct DustGrid {
     Dust **grid;
     uint8_t quantityLenXY;
 } DustGrid;
 
-typedef struct DustCube 
-{
-    uint16_t **dustLineGrid;
+typedef struct DustCube {
+    uint16_t **dustLine;
     static uint8_t quantityLenXYZ;
 } DustCube;
 

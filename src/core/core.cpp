@@ -11,7 +11,12 @@
 #include <intrin.h>  
 
 
+#include "area/area.hpp"
+#include "render/render.hpp"
+
 static LARGE_INTEGER g_qpc_frequency{0};
+int ContinueFlag = 0;
+
 
 int initialize_timing() {
     if (g_qpc_frequency.QuadPart == 0) {
@@ -81,14 +86,22 @@ int MainLoop(int target_fps, Area *AREA) {
         fprintf(stderr, "Error: Cant get start time value.\n");
         return 0;
     }
+    if (!Init_Render()){
+        printf("Render can't initialize!\n");
+        return 0;
+    }
+
     uint64_t next_frame_target_time_ns = current_time_ns + target_frame_ns;
     printf("Started with FPS=%d, Frame value: %llu ns\n", target_fps, (unsigned long long)target_frame_ns);
-    while (g_stop_signal_received == 0) {
+    while (ContinueFlag >= 0) {
 #else
 
 #endif
-// place for functions
         
+        _PrepareRender();
+        UpdateScreen();
+        _ClearRender();
+
 #ifdef WIN32
         frame_count++;
         current_time_ns = get_monotonic_time_ns();
@@ -107,5 +120,3 @@ int MainLoop(int target_fps, Area *AREA) {
     printf("Main loop culminate\n");
     return 1;
 }
-
-#endif
