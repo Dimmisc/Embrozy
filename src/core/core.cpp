@@ -1,7 +1,4 @@
 #include "core.hpp"
-
-
-//#include "area/area.hpp"
 #include <cstdint>
 
 #ifdef WIN32
@@ -13,6 +10,7 @@
 
 #include "area/area.hpp"
 #include "render/render.hpp"
+
 
 static LARGE_INTEGER g_qpc_frequency{0};
 int ContinueFlag = 0;
@@ -65,7 +63,36 @@ void precise_sleep_ns(uint64_t nanoseconds) {
 #endif
 
 int Init_core(){
+    namespace fs = std::filesystem;
+    if (!fs::exists("assets")) {
+        return ERROR_ASSETS_MISSING;
+    }
+    fs::current_path(fs::current_path()/"assets");
+    if (!fs::exists("textures") || !fs::exists("shaders") || !fs::exists("models") || !fs::exists("fonts")) {
+        return ERROR_ASSETS_COMPOUND_BREAK;
+    }
+    else if (!fs::exists("saves")) {
+        try {
+            fs::create_directory("saves");
+        }
+        catch (const fs::filesystem_error& e) {
+            fprintf(stderr, "Error: Can't create 'saves' directory. %s\n", e.what());
+            return ERROR_ASSETS_COMPOUND_BREAK;
+        }
+    }
+    fs::current_path(".."); 
 
+    if (!Init_Render()) { 
+        fprintf(stderr, "Error: Render not initialized.\n");
+        return RENDER_INIT_FAIL;
+    }
+
+    Area *AREA = new Area("New World", true);
+    if (!AREA) {
+        fprintf(stderr, "Error: Can't create new area.\n");
+        return ERROR_AREA_CREATE;
+    }
+    return SUCCESS;
 }
 
 int MainLoop(int target_fps, Area *AREA) {
@@ -86,11 +113,6 @@ int MainLoop(int target_fps, Area *AREA) {
         fprintf(stderr, "Error: Cant get start time value.\n");
         return 0;
     }
-    if (!Init_Render()){
-        printf("Render can't initialize!\n");
-        return 0;
-    }
-
     uint64_t next_frame_target_time_ns = current_time_ns + target_frame_ns;
     printf("Started with FPS=%d, Frame value: %llu ns\n", target_fps, (unsigned long long)target_frame_ns);
     while (ContinueFlag >= 0) {
@@ -98,7 +120,6 @@ int MainLoop(int target_fps, Area *AREA) {
 
 #endif
         
-        _PrepareRender();
         UpdateScreen();
         _ClearRender();
 
@@ -115,6 +136,8 @@ int MainLoop(int target_fps, Area *AREA) {
             next_frame_target_time_ns = current_time_ns + target_frame_ns;
         }
     }
+#else
+
 #endif
 
     printf("Main loop culminate\n");

@@ -9,7 +9,7 @@
 #include <DS>
 #include "cube.hpp"
 
-uint8_t quantityLayots = 0;
+static uint8_t quantityLayots = 0;
 
 typedef struct {
     int32_t x, y, z;
@@ -18,6 +18,7 @@ typedef struct {
 class Cell 
 {
 public:
+    
     CubeGrid *cubeLayots;
     Surface *cellFace;
     CellPos cellPos;
@@ -64,9 +65,10 @@ class CellSystem {
     }
 
 public:
+    CellPos central_cell;
     Cell **space;
-    int8_t  quantity {}; // Calculated by radius
-    int8_t depthQ {}; // 
+    int8_t  quantity {}; // rounded radius
+    int8_t depthQ {}; // depth attached cells
 
     // It take radius and depth in cells
     CellSystem(uint8_t radius, uint8_t depth, CellPos central_cell);
@@ -75,7 +77,7 @@ public:
     CellSystem(uint8_t radius, uint8_t depth);
 
     // It resize radius in cells
-    int resize(int radius);
+    int resize(int radius, int depth);
 
     // Set central chunk position
     int centralCell(CellPos central_cell);

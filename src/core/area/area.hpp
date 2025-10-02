@@ -7,18 +7,27 @@
 
 #include <string>
 #include <cstdint>
-#include <glm/glm.hpp>
+#include "pcg/world-gen.hpp"
+
 
 class Area {
     
+public:
     std::string name;
     uint64_t seed;
+    
+    bool local_world;
 
-    Player *players;
     Camera MainPlayer;
-    CellSystem world;
+    FastNoiseLite *generator;
+    CellSystem terrain;
+    
+    Player *players;
 
-    Area(std::string name, const bool LOCALWORLD);
+    Area(std::string name, bool LOCALWORLD): name(name), local_world(LOCALWORLD), terrain(1, 1) {
+        generator = Init_PCG(seed);
+         // Cellsystem Will be changed, but not now
+    }
 
     int upload(std::string name);
 

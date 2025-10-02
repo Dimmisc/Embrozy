@@ -4,4 +4,5 @@
 int dust_main(){
     sizeof(Dust);
     sizeof(int);
+    return 0;
 }

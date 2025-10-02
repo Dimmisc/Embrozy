@@ -9,6 +9,6 @@ class Surface
 {
 public:
     static uint8_t dustSize;
-    dust **dustedSurface;
+    Dust **dustedSurface;
 };
 #endif //_SURFACE_HPP_

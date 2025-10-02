@@ -5,17 +5,18 @@
 #include <iostream>
 #include <cstdint>
 
+int deltaTime = 0;
+bool firstMouse = true;
+
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
 void mouse_callback(GLFWwindow* window, double xposIn, double yposIn, Camera &camera);
 
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset, Camera &camera);
 
-void processWindowInput(GLFWwindow *window, Camera &camera)
-{
+void processWindowInput(GLFWwindow *window, Camera &camera) {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
-
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
         camera.ProcessKeyboard(FORWARD, deltaTime);
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)

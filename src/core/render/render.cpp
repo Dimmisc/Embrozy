@@ -1,29 +1,33 @@
 #include "render.hpp"
-#include "../../../glad/include/glad/glad.h"
 #include "../area/area.hpp"
-#include <GLFW/glfw3.h>
 #include <iostream>
 #include "window.hpp"
-
-
+#include <DS>
 
 #ifdef RENDER_STRUCTURE_VULLKAN_USE
-
 #else
-int Init_Render(Area AREA) {
+int Init_Render() {
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
+        std::cout << "Failed to initialize GLAD" << std::endl;
+        return ERROR_INIT_OPENGL;
+    }
+    if(!glfwInit()){
+        std::cout << "Failed to initialize GLFW" << std::endl;
+        return ERROR_INIT_GLFW;
+    }
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+    return SUCCESS;
 }
 
-
-int _PrepareRender() {
-
-}
 
 int UpdateScreen() {
-
+    return SUCCESS;
 }
 
-int _PrepareRender(){
-
+int _ClearRender() {
+    return SUCCESS;
 }
-
 #endif

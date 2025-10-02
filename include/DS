@@ -2,6 +2,14 @@
 #define _DEFENITION_SCOPE_HPP_
 #include <cstdint>
 
+#define SUCCESS 1
+#define FAIL 0
+#define ERROR_ASSETS_MISSING -1
+#define ERROR_ASSETS_COMPOUND_BREAK -2
+#define ERROR_AREA_CREATE -3
+#define RENDER_INIT_FAIL -4
+#define ERROR_INIT_OPENGL -5    
+#define ERROR_INIT_GLFW -6
 
 namespace directions {
     const uint8_t LEFT = 0b00001000;

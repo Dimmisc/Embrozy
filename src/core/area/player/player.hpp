@@ -5,7 +5,6 @@
 #include "../dust.hpp"
 #include "../../render/camera.hpp"
 
-#include <glm/glm.hpp>
 
 
 class Player 

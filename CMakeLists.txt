@@ -28,7 +28,7 @@ set(SOURCE_FILES ${SOURCE_FILES} main.cpp)
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
 
 # Link libraries
-target_link_libraries(${PROJECT_NAME} OpenGL::GL  glfw)
+target_link_libraries(${PROJECT_NAME} OpenGL::GL glfw)
     
 # Optional Windows definitions
 if(WIN32)

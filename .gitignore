@@ -3,3 +3,5 @@ build/
 glad/src
 glad/include
 stb/stb_image.h
+assets/saves/
+include/fastnoiselite.h
