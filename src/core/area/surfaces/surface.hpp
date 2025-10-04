@@ -4,11 +4,14 @@
 #include <cstdint>
 
 #include "../dust.hpp"
+#include <vector>
+using std::vector;
+
 
 class Surface
 {
 public:
-    static uint8_t dustSize;
-    Dust **dustedSurface;
+    vector<vector<int16_t>> surface;
+    Surface(int16_t size): surface(size, vector<int16_t>(size)){}
 };
 #endif //_SURFACE_HPP_

@@ -19,7 +19,7 @@ public:
     bool local_world;
 
     Camera MainPlayer;
-    FastNoiseLite *generator;
+    Generator *generator;
     CellSystem terrain;
     
     Player *players;

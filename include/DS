@@ -10,6 +10,8 @@
 #define RENDER_INIT_FAIL -4
 #define ERROR_INIT_OPENGL -5    
 #define ERROR_INIT_GLFW -6
+#define ERROR_UNCOMPATIBLE_DIRECTION -7
+
 
 namespace directions {
     const uint8_t LEFT = 0b00001000;
@@ -18,7 +20,7 @@ namespace directions {
     const uint8_t DOWN = 0b00100000; 
     const uint8_t FORWARD = 0b00000001;
     const uint8_t BACKWARD = 0b00000010; 
-} 
+}
 
 
 #endif

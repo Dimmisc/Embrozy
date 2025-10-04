@@ -1,7 +1,7 @@
 #include "cell.hpp"
 
 
-CellSystem::CellSystem(uint8_t radius, uint8_t depth, CellPos central_cell) {
+CellSystem::CellSystem(uint8_t radius, uint8_t depth, glm::dvec3 central_cell) {
 
 }
 
@@ -9,15 +9,24 @@ CellSystem::CellSystem(uint8_t radius, uint8_t depth) {
 
 }
 
-int CellSystem::resize(int radius, int depth) {
-    return SUCCESS;
+void CellSystem::resize(uint16_t radius, uint16_t depth) {
+    if (radius == 0) {
+        this->depth = depth;
+    }
+    else if (depth == 0) {
+        this->radius = radius;
+    }
+    else {
+        this->depth = depth;
+        this->radius = radius;
+    }
 }
 
-int CellSystem::centralCell(CellPos central_cell) {
+int CellSystem::centralCell(glm::dvec3 central_cell) {
     return SUCCESS;
 }
 
 // The Z shift now is not avalible
-int CellSystem::central_shift(int x, int y, int z) {
+int CellSystem::systemShift(glm::dvec3 camera_position) {
     return SUCCESS;
 }
