@@ -8,6 +8,7 @@
 #include <string>
 #include <cstdint>
 #include "pcg/world-gen.hpp"
+#include <glm/glm.hpp>
 
 
 class Area {
@@ -18,15 +19,20 @@ public:
     
     bool local_world;
 
-    Camera MainPlayer;
-    Generator *generator;
-    CellSystem terrain;
-    
-    Player *players;
+    Camera PlayerCamera;
+    CellSystem *terrain{nullptr};
 
-    Area(std::string name, bool LOCALWORLD): name(name), local_world(LOCALWORLD), terrain(1, 1) {
-        generator = Init_PCG(seed);
-         // Cellsystem Will be changed, but not now
+    Area(std::string name, bool LOCALWORLD) : 
+    name(name), local_world(LOCALWORLD), PlayerCamera(glm::dvec3(0.0f)) {
+        // printf("CameraCreated: height: %d, width: %d", PlayerCamera.SCREEN_WIDTH, PlayerCamera.SCREEN_HEIGHT);
+    }
+
+    void CreateTerrain(int depth, int radius, glm::dvec3 Position){
+        terrain = new CellSystem(radius - 1, depth - 1, Position, Init_PCG(124851));
+    }
+
+    int render() {
+        return this->terrain->render(&PlayerCamera);
     }
 
     int upload(std::string name);

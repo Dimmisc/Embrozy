@@ -26,6 +26,10 @@ glm::mat4 Camera::GetViewMatrix()
     return glm::lookAt(Pos, Pos + Front, Up);
 }
 
+glm::mat4 Camera::GetProjectionMatrix() {
+     return glm::perspective(glm::radians(Zoom), (float)this->SCREEN_HEIGHT/this->SCREEN_WIDTH, NORMAL_NEAR_PLANE, NORMAL_FAR_PLANE);
+}
+
 void Camera::ProcessKeyboard(Camera_Movement direction, float deltaTime)
 {
     float velocity = MovementSpeed * deltaTime;
@@ -39,20 +43,22 @@ void Camera::ProcessKeyboard(Camera_Movement direction, float deltaTime)
         Position += Right * velocity;
 }
 
-void Camera::ProcessMouseMovement(float xoffset, float yoffset, bool constrainPitch)
-{
-    xoffset *= MouseSensitivity;
-    yoffset *= MouseSensitivity;
-
-    Yaw   += xoffset;
-    Pitch += yoffset;
+void Camera::ProcessMouseMovement(float xoffset, float yoffset, bool constrainPitch) {
+    if (xoffset){
+        xoffset *= this->MouseSensitivity;
+        Yaw   += xoffset;
+    }
+    if (yoffset) {
+        yoffset *= this->MouseSensitivity;
+        Pitch += yoffset;
+    }
 
     if (constrainPitch)
     {
-        if (Pitch > 89.0f)
-            Pitch = 89.0f;
-        if (Pitch < -89.0f)
-            Pitch = -89.0f;
+        if (this->Pitch > 89.0f)
+            this->Pitch = 89.0f;
+        if (this->Pitch < -89.0f)
+            this->Pitch = -89.0f;
     }
 
     // update vectors Front, Right и Up, using Eiler's angles
@@ -62,8 +68,8 @@ void Camera::ProcessMouseMovement(float xoffset, float yoffset, bool constrainPi
 void Camera::ProcessMouseScroll(float yoffset)
 {
     Zoom -= (float)yoffset;
-    if (Zoom < 1.0f)
-        Zoom = 1.0f;
+    if (Zoom < 0.001f)
+        Zoom = 0.001f;
     if (Zoom > 45.0f)
         Zoom = 45.0f;
 }
@@ -79,4 +85,7 @@ void Camera::updateCameraVectors()
     // update right, up vectors
     Right = glm::normalize(glm::cross(Front, WorldUp));  // Нормализуем, потому что их длина может приближаться к 0, когда вы смотрите вверх или вниз, что приводит к замедлению движения.
     Up    = glm::normalize(glm::cross(Right, Front));
+}
+void Camera::ProcessScreen(int width, int height){
+    this->SCREEN_HEIGHT = height, this->SCREEN_WIDTH = width;
 }

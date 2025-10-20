@@ -4,23 +4,35 @@
 #include "window.hpp"
 #include <DS>
 
-#ifdef RENDER_STRUCTURE_VULLKAN_USE
-#else
-int Init_Render() {
-    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-        std::cout << "Failed to initialize GLAD" << std::endl;
-        return ERROR_INIT_OPENGL;
-    }
-    if(!glfwInit()){
-        std::cout << "Failed to initialize GLFW" << std::endl;
-        return ERROR_INIT_GLFW;
-    }
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
+int Init_Render(int width, int height) {
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
+            std::cout << "Failed to initialize GLAD" << std::endl;
+    }
+
+    // GLuint fbo;
+    // glGenFramebuffers(1, &fbo);
+    // glBindFramebuffer(GL_FRAMEBUFFER, fbo);
+    // GLuint rboDepthStencil;
+    // glGenRenderbuffers(1, &rboDepthStencil);
+    // glBindRenderbuffer(GL_RENDERBUFFER, rboDepthStencil);
+    // glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH32F_STENCIL8, width, height);
+    // glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, rboDepthStencil);
+    // if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
+    //     std::cout << "ERROR::FRAMEBUFFER:: Framebuffer is not complete!" << std::endl;
+    // }
+    // GLint depthBits;
+    // glGetFramebufferAttachmentParameteriv(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, 
+    //                                  GL_FRAMEBUFFER_ATTACHMENT_DEPTH_SIZE, &depthBits);
+    // printf("Depth bits: %d\n", depthBits);
+    glEnable(GL_DEPTH_TEST);
+    // glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+    
     return SUCCESS;
 }
+
+
 
 
 int UpdateScreen() {
@@ -30,4 +42,3 @@ int UpdateScreen() {
 int _ClearRender() {
     return SUCCESS;
 }
-#endif

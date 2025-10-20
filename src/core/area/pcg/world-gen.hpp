@@ -13,7 +13,7 @@ struct Generator {
 
 // Function to set up generators,
 // that are needed for world generation
-Generator *Init_PCG(int seed);
+Generator Init_PCG(int seed);
 
 // Function to generate cells model
 // Cell *GenerateCellVAO(CellPos Position);

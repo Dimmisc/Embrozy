@@ -1,8 +1,8 @@
 #ifndef _CAMERA_HPP_
 #define _CAMERA_HPP_
 
-#define NORMAL_FAR_PLANE 4096.0f
-#define NORMAL_NEAR_PLANE 0.1f
+#define NORMAL_FAR_PLANE 320.0f // 90
+#define NORMAL_NEAR_PLANE 0.2f // 0.2
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -27,7 +27,7 @@ const float ZOOM        =  45.0f;
 class Camera
 {
 public:
-
+    int SCREEN_WIDTH{1600}, SCREEN_HEIGHT{2560};
     glm::dvec3 Position;
     glm::vec3 Front;
     glm::vec3 Up;
@@ -49,11 +49,15 @@ public:
     // give view matrix
     glm::mat4 GetViewMatrix();
 
+    glm::mat4 GetProjectionMatrix();
+
     void ProcessKeyboard(Camera_Movement direction, float deltaTime);
 
     void ProcessMouseMovement(float xoffset, float yoffset, bool constrainPitch = true);
 
     void ProcessMouseScroll(float yoffset);
+
+    void ProcessScreen(int width, int height);
 
 private:
 

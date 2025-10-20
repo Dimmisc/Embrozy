@@ -5,3 +5,7 @@ glad/include
 stb/stb_image.h
 assets/saves/
 include/fastnoiselite.h
+include/glad/include
+include/glad/src
+include/MT.hpp
+include/MemoryTraker.h
