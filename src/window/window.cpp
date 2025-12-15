@@ -3,29 +3,6 @@
 
 #include <GLFW/glfw3.h>
 #include <cstdint>
-float deltaTime = 20.0f;
-
-
-void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-
-void mouse_callback(GLFWwindow* window, double xposIn, double yposIn);
-
-void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
-
-void processWindowInput(GLFWwindow *window) {
-    Camera* camera = static_cast<Camera*>(glfwGetWindowUserPointer(window));
-
-    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-        glfwSetWindowShouldClose(window, true);
-    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-        camera->ProcessKeyboard(FORWARD, deltaTime);
-    if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-        camera->ProcessKeyboard(BACKWARD, deltaTime);
-    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-        camera->ProcessKeyboard(LEFT, deltaTime);
-    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-        camera->ProcessKeyboard(RIGHT, deltaTime);
-}
 
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset) {
     Camera* camera = static_cast<Camera*>(glfwGetWindowUserPointer(window));

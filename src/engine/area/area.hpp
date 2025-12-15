@@ -1,13 +1,11 @@
 #ifndef _AREA_HPP_
 #define _AREA_HPP_
 
-#include "player/player.hpp"
 #include "cell.hpp"
 
 
 #include <string>
 #include <cstdint>
-#include "pcg/world-gen.hpp"
 #include <glm/glm.hpp>
 
 

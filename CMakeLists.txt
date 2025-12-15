@@ -23,6 +23,9 @@ set(SOURCE_FILES ${SOURCE_FILES} main.cpp)
 add_executable(Embrozy
     ${SOURCE_FILES}
 )
+if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+    target_link_options(Embrozy PRIVATE "-static-libgcc" "-static-libstdc++")
+endif()
 
 target_link_libraries(Embrozy PRIVATE
     glad

@@ -1,11 +1,14 @@
 .vscode
+.cache
+.clangd
 build/
 glad/src
 glad/include
-stb/stb_image.h
+include/stb/stb_image.h
 assets/saves/
+include/imgui
 include/fastnoiselite.h
 include/glad/include
 include/glad/src
-include/MT.hpp
 include/MemoryTraker.h
+Embrozy.exe

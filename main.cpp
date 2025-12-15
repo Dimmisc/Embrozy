@@ -11,7 +11,7 @@ extern "C" {
 
 #include <iostream>
 
-#include "src/core/core.hpp"
+// #include "src/core/core.hpp"
 
 int main() {
     printf("Start Create params\n");

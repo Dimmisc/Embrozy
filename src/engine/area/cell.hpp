@@ -12,10 +12,10 @@
 #include <glm/gtc/matrix_transform.hpp>
 
 #include <DS>
-#include "cube.hpp"
-#include "pcg/world-gen.hpp"
-#include "../render/shaders.hpp"
-#include "../render/camera.hpp"
+// #include "cube.hpp"
+// #include "pcg/world-gen.hpp"
+// #include "../render/shaders.hpp"
+// #include "../render/camera.hpp"
 
 using std::vector;
 
